@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hotel Booking App</title>
+    <link th:if="${mode == 'development'}" rel="stylesheet" href="../static/bootstrap.css" th:href="@{/bootstrap.css}" />
+    <link th:if="${mode == 'production'}" rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <script type="text/javascript" src="/static/angular.min.js" th:src="@{/angular.min.js}"></script>
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/bookings.controller.js}"></script>
+</head>
+<body ng-app="app" ng-controller="BookingsController as vm">
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Hotel Booking App</a>
+            </div>
+            <p class="navbar-text navbar-right" th:text="'Signed in as ' + ${username}" style="margin-right: 10px;">Signed in as Anonymus</p>
+        </div>
+    </nav>
+</header>
+
+<div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8">
+            <!-- Get all bookings or only affordable ones -->
+            <div class="btn-group" role="group">
+                <button ng-click="vm.getAll()" type="button" class="btn btn-default">All</button>
+                <button ng-click="vm.getAffordable()" type="button" class="btn btn-default">Less than 100$</button>
+            </div>
+
+            <!-- Display bookings in a table -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Hotel</th>
+                    <th>Nights</th>
+                    <th>Price/Night</th>
+                    <th>Total Price</th>
+                    <th style="width: 90px"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="booking in vm.bookings">
+                    <td>{{booking.hotelName}}</td>
+                    <td>{{booking.nbOfNights}}</td>
+                    <td>{{booking.pricePerNight}}</td>
+                    <td>{{booking.totalPrice}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="vm.deleteBooking(booking.id)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer" style="position: absolute; bottom:0;background-color: #f5f5f5; width: 100%">
+    <div class="container">
+        <p th:text="${#dates.format(datetime, 'dd MMM yyyy HH:mm')}"  class="text-muted">Page was rendered today.</p>
+    </div>
+</footer>
+</body>
+</html>
