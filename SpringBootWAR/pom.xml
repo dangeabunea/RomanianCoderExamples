@@ -6,7 +6,7 @@
     <groupId>romaniancoder</groupId>
     <artifactId>BookingDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>SpringBootWAR</name>
     <description>Demo project for deploying Spring Boot apps (packaged as WARs) to a Tomcat server</description>
@@ -38,6 +38,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -56,6 +62,7 @@
     </dependencies>
 
     <build>
+        <finalName>booking-app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

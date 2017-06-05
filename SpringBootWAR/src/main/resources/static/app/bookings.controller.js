@@ -25,7 +25,7 @@
         }
 
         function getAll(){
-            var url = "/bookings/all";
+            var url = "/booking-app/bookings/all";
             var bookingsPromise = $http.get(url);
             bookingsPromise.then(function(response){
                 vm.bookings = response.data;
@@ -33,7 +33,7 @@
         }
 
         function getAffordable(){
-            var url = "/bookings/affordable/" + 100;
+            var url = "/booking-app/bookings/affordable/" + 100;
             var bookingsPromise = $http.get(url);
             bookingsPromise.then(function(response){
                 vm.bookings = response.data;
@@ -41,7 +41,7 @@
         }
 
         function deleteBooking(id){
-            var url = "/bookings/delete/" + id;
+            var url = "/booking-app/bookings/delete/" + id;
             $http.post(url).then(function(response){
                 vm.bookings = response.data;
             });
