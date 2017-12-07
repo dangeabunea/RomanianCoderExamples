@@ -46,5 +46,19 @@
                 vm.bookings = response.data;
             });
         }
+
+        function create(){
+            var url = "/booking-app/bookings/create";
+
+            var booking = {
+                pricePerNight:300,
+                hotelName:"Some Hotel",
+                nbOfNights:5
+            };
+
+            $http.post(url, booking).then(function(response){
+                alert('Hotel saved :)');
+            });
+        }
     }
 })();

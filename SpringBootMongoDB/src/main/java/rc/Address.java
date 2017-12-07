@@ -6,11 +6,6 @@ public class Address {
 
     protected Address(){}
 
-    public Address(String city, String country) {
-        this.city = city;
-        this.country = country;
-    }
-
     public String getCity() {
         return city;
     }
