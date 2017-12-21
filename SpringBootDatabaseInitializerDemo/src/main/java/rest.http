@@ -1,0 +1,4 @@
+GET http://localhost:8080/accounts/all
+Content-Type: application/json
+
+###
