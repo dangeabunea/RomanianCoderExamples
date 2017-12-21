@@ -1,13 +1,13 @@
 ### GET request that fetches hall the hotels
-GET http://localhost:8080/hotels/all
+GET {{host-url}}/hotels/all
 Content-Type: application/json
 
 ### GET request that fetches hotels by name
-GET http://localhost:8080/hotels/Ibis
+GET {{host-url}}/hotels/Ibis
 Content-Type: application/json
 
 ### POST request to checkin some guests
-POST http://localhost:8080/hotels/checkin
+POST {{host-url}}/hotels/checkin
 Content-Type: application/json
 
 {

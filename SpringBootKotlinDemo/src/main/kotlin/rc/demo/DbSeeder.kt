@@ -3,6 +3,11 @@ package rc.demo
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
+/**
+ * This class has a dependency on HotelRepository. We can declare that
+ * dependency in the primary constructor and it will be injected
+ * at runtime
+ */
 @Component
 class DbSeeder(val hotelRepository: HotelRepository) : CommandLineRunner {
     override fun run(vararg p0: String?) {
