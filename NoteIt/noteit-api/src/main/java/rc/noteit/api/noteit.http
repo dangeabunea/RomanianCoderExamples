@@ -1,0 +1,51 @@
+# API COLORS
+
+GET {{host-url}}/colors/all
+
+###
+
+
+
+# API NOTEBOOK MANAGEMENT
+
+GET {{host-url}}//notebooks/all
+
+###
+
+POST {{host-url}}/notebooks
+Content-Type: application/json
+
+{
+  "name": "Personal",
+  "color": "#000000"
+}
+###
+
+DELETE {{host-url}}/notebooks/3f6f9f6c-c3c2-40ba-a741-68615c6c8247
+###
+
+
+
+# API NOTE MANAGEMENT
+
+GET {{host-url}}//notes/all
+
+###
+
+GET {{host-url}}//notes/byId/b6d299ea-539a-42ed-83af-6163912aede4
+
+###
+
+POST {{host-url}}//notes
+Content-Type: application/json
+
+{
+  "title": "Another Note",
+  "description": "Another Note Description",
+  "notebookId": "1c560773-e9f2-4190-bae5-0b4d9a349ba3"
+}
+###
+
+DELETE {{host-url}}//notes/5d6e01a8-ae61-4303-8385-28c0621cfaaf
+
+###
