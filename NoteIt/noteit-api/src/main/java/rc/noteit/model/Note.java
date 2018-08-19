@@ -1,4 +1,4 @@
-package rc.noteit.notes;
+package rc.noteit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -3,9 +3,9 @@ package rc.noteit.db;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
-import rc.noteit.notes.Note;
-import rc.noteit.notes.Notebook;
-import rc.noteit.notes.NotebookColor;
+import rc.noteit.model.Note;
+import rc.noteit.model.Notebook;
+import rc.noteit.model.NotebookColor;
 
 import java.util.Arrays;
 import java.util.List;

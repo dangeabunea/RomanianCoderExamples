@@ -1,4 +1,4 @@
-package rc.noteit.notes;
+package rc.noteit.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

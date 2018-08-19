@@ -4,7 +4,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import rc.noteit.api.viewmodel.NotebookCreateUpdateViewModel;
 import rc.noteit.db.NotebookRepository;
-import rc.noteit.notes.Notebook;
+import rc.noteit.model.Notebook;
 
 import javax.validation.ValidationException;
 import java.util.List;
@@ -17,6 +17,7 @@ examples found in 'noteit.http' file.
 
 @RestController
 @RequestMapping("/api/notebooks")
+@CrossOrigin
 public class NotebookController {
     private NotebookRepository notebookRepository;
 

@@ -1,10 +1,11 @@
 package rc.noteit.api;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rc.noteit.db.NotebookColorRepository;
-import rc.noteit.notes.NotebookColor;
+import rc.noteit.model.NotebookColor;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ examples found in 'noteit.http' file.
 
 @RestController
 @RequestMapping("/api/colors")
+@CrossOrigin
 public class NotebookColorController {
     private NotebookColorRepository repository;
 

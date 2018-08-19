@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import rc.noteit.api.viewmodel.NoteCreateUpdateViewModel;
 import rc.noteit.db.NoteRepository;
 import rc.noteit.db.NotebookRepository;
-import rc.noteit.notes.Note;
+import rc.noteit.model.Note;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.ValidationException;

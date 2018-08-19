@@ -49,3 +49,16 @@ Content-Type: application/json
 DELETE {{host-url}}//notes/5d6e01a8-ae61-4303-8385-28c0621cfaaf
 
 ###
+
+
+# FEEDBACK
+
+POST {{host-url}}//feedback
+Content-Type: application/json
+
+{
+  "name": "Dan",
+  "email": "dan@gmail.com",
+  "feedback": "Your app is so cool"
+}
+###
