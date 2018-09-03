@@ -1,19 +1,14 @@
 package rc.noteit.api.viewmodel;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class NotebookCreateUpdateViewModel {
+public class NotebookViewModel {
     private String id;
 
     @NotNull
     private String name;
 
-    @NotNull
-    @Min(7)
-    @Max(7)
-    private String color;
+    private int nbNotes;
 
     public String getId() {
         return id;
@@ -31,11 +26,11 @@ public class NotebookCreateUpdateViewModel {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public int getNbNotes() {
+        return nbNotes;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setNbNotes(int nbNotes) {
+        this.nbNotes = nbNotes;
     }
 }

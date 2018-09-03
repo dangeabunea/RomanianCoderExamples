@@ -1,20 +1,25 @@
 package rc.noteit.api.viewmodel;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
-public class NoteCreateUpdateViewModel {
+public class NoteViewModel {
     private String id;
 
     @NotNull
     @Min(3)
     private String title;
 
-    private String description;
+    @NotNull
+    private String text;
 
     @NotNull
     private String notebookId;
 
+    private Date lastModifiedOn;
 
     public String getId() {
         return id;
@@ -32,16 +37,28 @@ public class NoteCreateUpdateViewModel {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String text) {
+        this.text = text;
     }
 
 
     public String getNotebookId() {
         return notebookId;
+    }
+
+    public Date getLastModifiedOn() {
+        return lastModifiedOn;
+    }
+
+    public void setLastModifiedOn(Date lastModifiedOn) {
+        this.lastModifiedOn = lastModifiedOn;
+    }
+
+    public void setNotebookId(String notebookId) {
+        this.notebookId = notebookId;
     }
 }

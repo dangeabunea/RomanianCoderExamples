@@ -5,10 +5,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import rc.noteit.model.Note;
 import rc.noteit.model.Notebook;
-import rc.noteit.model.NotebookColor;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This component will only execute (and get instantiated) if the
@@ -21,14 +17,11 @@ import java.util.List;
 public class DbSeeder implements CommandLineRunner {
     private NotebookRepository notebookRepository;
     private NoteRepository noteRepository;
-    private NotebookColorRepository notebookColorRepository;
 
     public DbSeeder(NotebookRepository notebookRepository,
-                    NoteRepository noteRepository,
-                    NotebookColorRepository notebookColorRepository) {
+                    NoteRepository noteRepository) {
         this.notebookRepository = notebookRepository;
         this.noteRepository = noteRepository;
-        this.notebookColorRepository = notebookColorRepository;
     }
 
 
@@ -37,22 +30,14 @@ public class DbSeeder implements CommandLineRunner {
         // Remove all existing entities
         this.notebookRepository.deleteAll();
         this.noteRepository.deleteAll();
-        this.notebookColorRepository.deleteAll();
 
-        // Save colors
-        List<NotebookColor> colors = Arrays.asList(
-                new NotebookColor("Red", "#C70039"),
-                new NotebookColor("Blue", "#06749A"),
-                new NotebookColor("Violet", "#8E44AD"),
-                new NotebookColor("Brown", "#7B241C"),
-                new NotebookColor("Green", "#27AE60"),
-                new NotebookColor("Orange", "#EB984E")
-                );
-        this.notebookColorRepository.saveAll(colors);
 
         // Save a default notebook
-        var defaultNotebook = new Notebook("Default", NotebookColor.defaultColorHexCode());
+        var defaultNotebook = new Notebook("Default");
         this.notebookRepository.save(defaultNotebook);
+
+        var quotesNotebook = new Notebook("Quotes");
+        this.notebookRepository.save(quotesNotebook);
 
         // Save the welcome note
         var note = new Note("Hello", "Welcome to Note It", defaultNotebook);

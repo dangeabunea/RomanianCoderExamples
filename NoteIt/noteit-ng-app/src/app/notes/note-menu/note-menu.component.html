@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-8">
+    <input type="text"
+           [(ngModel)]="searchText"
+           (change)="changeSearchText()"
+           class="form-control"
+           style="width: 100%;"
+           placeholder="Search notes...">
+  </div>
+  <div class="col-md-4">
+    <button type="buton" (click)="createNewNotebook()"
+            class="btn btn-info pull-right"
+            style="margin-left:12px;"><i class="fa fa-plus"></i> New notebook
+    </button>
+    <button type="button" (click)="createNewNote()"
+            [disabled]="!selectedNotebook"
+            class="btn btn-warning pull-right"
+            style="margin-left:12px;"><i class="fa fa-plus"></i> New note
+    </button>
+  </div>
+
+</div>

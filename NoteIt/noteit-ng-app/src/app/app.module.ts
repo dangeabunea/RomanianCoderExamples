@@ -8,6 +8,11 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { NoteComponent } from './notes/note/note.component';
+import { NoteMenuComponent } from './notes/note-menu/note-menu.component';
+import { NotebookComponent } from './notes/notebook/notebook.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { NoteTextSearchPipe } from './notes/note-text-search.pipe';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +35,12 @@ const appRoutes: Routes = [
     AppComponent,
     NotesComponent,
     FeedbackComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NoteComponent,
+    NoteMenuComponent,
+    NotebookComponent,
+    NavigationComponent,
+    NoteTextSearchPipe
   ],
   imports: [
     BrowserModule,

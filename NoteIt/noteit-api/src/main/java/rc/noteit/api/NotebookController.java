@@ -2,7 +2,8 @@ package rc.noteit.api;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import rc.noteit.api.viewmodel.NotebookCreateUpdateViewModel;
+import rc.noteit.Mapper;
+import rc.noteit.api.viewmodel.NotebookViewModel;
 import rc.noteit.db.NotebookRepository;
 import rc.noteit.model.Notebook;
 
@@ -20,9 +21,11 @@ examples found in 'noteit.http' file.
 @CrossOrigin
 public class NotebookController {
     private NotebookRepository notebookRepository;
+    private Mapper mapper;
 
-    public NotebookController(NotebookRepository notebookRepository) {
+    public NotebookController(NotebookRepository notebookRepository, Mapper mapper) {
         this.notebookRepository = notebookRepository;
+        this.mapper = mapper;
     }
 
     @GetMapping("/all")
@@ -32,21 +35,18 @@ public class NotebookController {
     }
 
     @PostMapping
-    public void create(@RequestBody NotebookCreateUpdateViewModel notebookCreateUpdateViewModel,
-                       BindingResult bindingResult) {
+    public Notebook save(@RequestBody NotebookViewModel notebookViewModel,
+                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new ValidationException();
         }
 
-        // create notebook instance from view model
-        var notebook = new Notebook(
-                notebookCreateUpdateViewModel.getId(),
-                notebookCreateUpdateViewModel.getName(),
-                notebookCreateUpdateViewModel.getColor()
-        );
+        var notebookEntity = this.mapper.convertToNotebookEntity(notebookViewModel);
 
-        // save notebook instance to db
-        this.notebookRepository.save(notebook);
+        // save notebookEntity instance to db
+        this.notebookRepository.save(notebookEntity);
+
+        return notebookEntity;
     }
 
     @DeleteMapping("/{id}")

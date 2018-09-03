@@ -41,7 +41,7 @@ Content-Type: application/json
 
 {
   "title": "Another Note",
-  "description": "Another Note Description",
+  "text": "Another Note Description",
   "notebookId": "1c560773-e9f2-4190-bae5-0b4d9a349ba3"
 }
 ###

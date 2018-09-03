@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FeedbackService} from "./feedback.service";
+import {ApiService} from "../shared/api.service";
 
 @Component({
   selector: 'app-feedback',
@@ -13,14 +13,14 @@ export class FeedbackComponent implements OnInit {
     feedback: ""
   };
 
-  constructor(private feedbackService: FeedbackService) {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
   }
 
   sendFeedback(): void {
-    this.feedbackService.sendFeedback(this.model)
+    this.apiService.sendFeedback(this.model)
       .subscribe(
         res => {
         alert("Feedback was sent;");
