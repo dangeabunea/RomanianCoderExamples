@@ -1,0 +1,52 @@
+<div class="container">
+  <!-- Note menu -->
+  <div class="row" style="margin-top:12px;">
+    <div class="col-md-8">
+      <input type="text"
+             class="form-control"
+             style="width: 100%;"
+             placeholder="Search notes...">
+    </div>
+    <div class="col-md-4">
+      <button type="buton"
+              (click)="createNotebook()"
+              class="btn btn-info pull-right"
+              style="margin-left:12px;"><i class="fa fa-plus"></i> New notebook
+      </button>
+      <button type="button"
+              class="btn btn-warning pull-right"
+              style="margin-left:12px;"><i class="fa fa-plus"></i> New note
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Note content -->
+  <div class="row" style="margin-top: 28px;">
+    <!-- Notebooks Menu -->
+    <div class="col-md-3">
+      <br>
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action">
+          <i class="fa fa-book"></i>&nbsp;All
+        </a>
+        <!-- Notebook List -->
+        <a *ngFor="let notebook of notebooks" class="list-group-item list-group-item-action">
+          <i class="fa fa-book"></i>&nbsp;{{notebook.name}}
+        </a>
+      </div>
+    </div>
+
+    <!-- Notes Panel -->
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Message if there are no notes -->
+        </div>
+      </div>
+      <div class="row">
+        <!-- Note list -->
+      </div>
+    </div>
+  </div>
+</div>
