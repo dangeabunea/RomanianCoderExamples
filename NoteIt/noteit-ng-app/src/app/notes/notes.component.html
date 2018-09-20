@@ -32,7 +32,11 @@
         </a>
         <!-- Notebook List -->
         <a *ngFor="let notebook of notebooks" class="list-group-item list-group-item-action">
-          <i class="fa fa-book"></i>&nbsp;{{notebook.name}}
+          <i class="fa fa-book"></i>&nbsp;
+          <input [(ngModel)]="notebook.name" (change)="updateNotebook(notebook)" type="text" class="input-label" style="width: 80%"/>
+          <a (click)="deleteNotebook(notebook)" class="pull-right text-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
         </a>
       </div>
     </div>
