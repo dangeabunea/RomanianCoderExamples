@@ -1,5 +1,5 @@
 export interface Notebook {
-  id: string;
-  name: string;
-  nbOfNotes: number;
+  id:string;
+  name:string;
+  nbOfNotes:number;
 }

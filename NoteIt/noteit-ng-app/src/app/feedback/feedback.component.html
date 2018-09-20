@@ -2,7 +2,7 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="col-md-6">
-      <form name="form" (ngSubmit)="f.form.valid && sendFeedback()" #f="ngForm" novalidate class="feedback-form">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && sendFeedback()" novalidate class="feedback-form">
         <!-- Name -->
         <div class="form-group">
           <label for="name">First Name</label>
@@ -13,13 +13,15 @@
                  placeholder="Your name"
                  [(ngModel)]="model.name"
                  #name="ngModel"
-                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required/>
-          <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-            <div *ngIf="name.errors?.required">Name is required</div>
+                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="name.errors?.required">Field is required</div>
           </div>
         </div>
-
-        <!-- Name -->
+        <!-- Email -->
         <div class="form-group">
           <label for="email">Email</label>
           <input type="text"
@@ -29,14 +31,17 @@
                  placeholder="Your email"
                  [(ngModel)]="model.email"
                  #email="ngModel"
-                 [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email/>
-          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-            <div *ngIf="email.errors?.required">Email is required</div>
-            <div *ngIf="email.errors?.email">Email is not valid</div>
+                 [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                 required email/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="email.errors?.required">Field is required</div>
+            <div *ngIf="email.errors?.email">Field is not a valid email</div>
           </div>
         </div>
 
-        <!-- Name -->
+        <!-- Feedback -->
         <div class="form-group">
           <label for="feedback">Feedback</label>
           <textarea
@@ -44,14 +49,17 @@
             class="form-control"
             name="feedback"
             placeholder="Your feedback"
+            rows="10"
             [(ngModel)]="model.feedback"
             #feedback="ngModel"
-            rows="10"
-            [ngClass]="{ 'is-invalid': f.submitted && feedback.invalid }" required minlength="10">
-      </textarea>
-          <div *ngIf="f.submitted && feedback.invalid" class="invalid-feedback">
-            <div *ngIf="feedback.errors?.required">Feedback is required</div>
-            <div *ngIf="feedback.errors?.minlength">Feedback must have 10 characters</div>
+            [ngClass]="{ 'is-invalid': f.submitted && feedback.invalid }"
+            required minlength="10">
+			    </textarea>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && feedback.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="feedback.errors?.required">Field is required</div>
+            <div *ngIf="feedback.errors?.minlength">Field is too small (try 10 characters)</div>
           </div>
         </div>
 

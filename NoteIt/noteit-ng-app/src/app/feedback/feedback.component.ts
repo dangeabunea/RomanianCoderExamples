@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {ApiService} from "../shared/api.service";
 
 @Component({
@@ -7,10 +8,10 @@ import {ApiService} from "../shared/api.service";
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
-  model: FeedbackModel = {
-    name: "",
-    email: "",
-    feedback: ""
+  model: FeedbackViewModel = {
+    name: '',
+    email: '',
+    feedback: ''
   };
 
   constructor(private apiService: ApiService) {
@@ -20,19 +21,19 @@ export class FeedbackComponent implements OnInit {
   }
 
   sendFeedback(): void {
-    this.apiService.sendFeedback(this.model)
-      .subscribe(
-        res => {
-        alert("Feedback was sent;");
+    this.apiService.postFeedback(this.model).subscribe(
+      res => {
         location.reload();
       },
-        err => {
-          alert("Error :(");
-        });
+      err => {
+        alert("An error has occurred while sending feedback");
+      }
+    );
   }
+
 }
 
-export interface FeedbackModel {
+export interface FeedbackViewModel {
   name: string;
   email: string;
   feedback: string;
