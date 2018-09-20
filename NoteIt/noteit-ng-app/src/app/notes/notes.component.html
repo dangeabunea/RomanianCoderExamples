@@ -14,6 +14,8 @@
               style="margin-left:12px;"><i class="fa fa-plus"></i> New notebook
       </button>
       <button type="button"
+              (click)="createNote(selectedNotebook.id)"
+              [disabled]="selectedNotebook == null"
               class="btn btn-warning pull-right"
               style="margin-left:12px;"><i class="fa fa-plus"></i> New note
       </button>
@@ -27,11 +29,11 @@
     <div class="col-md-3">
       <br>
       <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action">
+        <a (click)="selectAllNotes()" class="list-group-item list-group-item-action">
           <i class="fa fa-book"></i>&nbsp;All
         </a>
         <!-- Notebook List -->
-        <a *ngFor="let notebook of notebooks" class="list-group-item list-group-item-action">
+        <a *ngFor="let notebook of notebooks" (click)="selectNotebook(notebook)" class="list-group-item list-group-item-action">
           <i class="fa fa-book"></i>&nbsp;
           <input [(ngModel)]="notebook.name" (change)="updateNotebook(notebook)" type="text" class="input-label" style="width: 80%"/>
           <a (click)="deleteNotebook(notebook)" class="pull-right text-danger">
@@ -46,10 +48,36 @@
       <div class="row">
         <div class="col-md-12">
           <!-- Message if there are no notes -->
+          <h3 *ngIf="selectedNotebook != null">{{selectedNotebook.name}}</h3>
+          <h3 *ngIf="selectedNotebook == null">All notes</h3>
+          <p *ngIf="this.notes.length === 0">There are no notes to display in this notebook :(</p>
         </div>
       </div>
       <div class="row">
         <!-- Note list -->
+        <div *ngFor="let note of notes" class="card bg-warning" style="border:4px solid white;">
+          <div class="card-body" style="padding: 8px; margin-top: 8px;">
+            <div>
+              <!-- title -->
+              <input type="text"
+                     [(ngModel)]="note.title"
+                     (change)="updateNote(note)"
+                     class="input-label-lg"
+                     maxlength="18" style="width: 80%"
+              />
+              <a (click)="deleteNote(note)" class="pull-right text-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+            <!-- text -->
+            <textarea class="input-label"
+                      style="width: 100%" rows="6"
+                      [(ngModel)]="note.text"
+                      (change)="updateNote(note)"></textarea>
+            <strong class="text-info" style="font-size: small"><!-- Will add date when we learn about pipes --></strong>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
