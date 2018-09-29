@@ -29,7 +29,7 @@ import java.util.UUID;
  * <p>
  * All mappings are handled here, but in production code this is not the
  * best approach. You can take a look at ModelMapper project or at least split mapping classes
- * across many files
+ * across many files.
  */
 
 @Component
