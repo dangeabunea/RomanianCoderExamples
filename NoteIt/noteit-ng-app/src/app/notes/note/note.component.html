@@ -17,6 +17,6 @@
               style="width: 100%" rows="6"
               [(ngModel)]="note.text"
               (change)="updateNote()"></textarea>
-    <strong class="text-info" style="font-size: small"><!-- Will add date when we learn about pipes --></strong>
+    <strong class="text-info" style="font-size: small">{{note.lastModifiedOn | date:'dd-MM-yyy HH:mm'}}</strong>
   </div>
 </div>
