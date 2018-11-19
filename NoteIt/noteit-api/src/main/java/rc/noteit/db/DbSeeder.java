@@ -43,6 +43,10 @@ public class DbSeeder implements CommandLineRunner {
         var note = new Note("Hello", "Welcome to Note It", defaultNotebook);
         this.noteRepository.save(note);
 
+        // Save a quote note
+        var quoteNote = new Note("Latin Quote", "Carpe Diem", quotesNotebook);
+        this.noteRepository.save(quoteNote);
+
         System.out.println("Initialized database");
     }
 }

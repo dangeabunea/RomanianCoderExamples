@@ -6,10 +6,9 @@
     <groupId>rc</groupId>
     <artifactId>note-it-api</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>noteit</name>
-    <text>Demo project for Spring Boot</text>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -54,9 +53,24 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- Executable and self-hosted -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JDK 9/10 support. This step is required because those modules are deprecated and will be removed by JEP-320 that is scheduled to be released with JDK 11. -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>noteitservice</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

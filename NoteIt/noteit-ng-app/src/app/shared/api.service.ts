@@ -9,7 +9,7 @@ import {Note} from "../notes/model/note";
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE_URL = "http://localhost:8082/api";
+  private BASE_URL = window["cfgApiBaseUrl"] + "/api";
   public ALL_NOTEBOOKS_URL = `${this.BASE_URL}/notebooks/all`;
   private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedback`;
   private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}/notebooks`;
