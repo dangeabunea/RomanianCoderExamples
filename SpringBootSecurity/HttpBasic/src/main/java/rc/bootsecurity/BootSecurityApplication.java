@@ -17,6 +17,9 @@ public class BootSecurityApplication {
         SpringApplication.run(BootSecurityApplication.class, args);
     }
 
+
+
+
     @Bean
     public ServletWebServerFactory servletContainer() {
         // Enable SSL Trafic
@@ -51,4 +54,5 @@ public class BootSecurityApplication {
         connector.setRedirectPort(8443);
         return connector;
     }
+
 }
