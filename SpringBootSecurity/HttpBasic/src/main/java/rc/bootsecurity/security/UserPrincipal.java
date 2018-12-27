@@ -1,4 +1,4 @@
-package rc.bootsecurity;
+package rc.bootsecurity.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
