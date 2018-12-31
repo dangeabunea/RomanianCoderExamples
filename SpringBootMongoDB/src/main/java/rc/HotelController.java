@@ -4,6 +4,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/hotels")
@@ -33,9 +34,9 @@ public class HotelController {
 
     @GetMapping("/{id}")
     public Hotel getById(@PathVariable("id") String id){
-        Hotel hotel = this.hotelRepository.findById(id);
+        Optional<Hotel> hotel = this.hotelRepository.findById(id);
 
-        return hotel;
+        return hotel.get();
     }
 
     @GetMapping("/price/{maxPrice}")

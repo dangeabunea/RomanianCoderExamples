@@ -7,7 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
 
+//@Data
 @Document(collection = "Hotels")
 public class Hotel {
     @Id
