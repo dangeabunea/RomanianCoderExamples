@@ -1,0 +1,7 @@
+### Test endpoint
+GET https://localhost:8443/api/public/test
+Content-Type: application/json
+
+### Grab all users
+GET https://localhost:8443/api/public/admin/users
+Content-Type: application/json
