@@ -27,7 +27,7 @@ public class PublicRestApiController {
 
     // Available to managers
     @GetMapping("management/reports")
-    public String test2(){
+    public String reports(){
         return "Some report data";
     }
 
