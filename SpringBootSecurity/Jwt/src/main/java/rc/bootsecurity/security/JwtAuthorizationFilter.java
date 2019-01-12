@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import rc.bootsecurity.db.UserRepository;
 import rc.bootsecurity.model.User;
@@ -17,12 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
+
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     private UserRepository userRepository;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager,
-                                  AuthenticationEntryPoint authenticationEntryPoint, UserRepository userRepository) {
-        super(authenticationManager, authenticationEntryPoint);
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
+        super(authenticationManager);
         this.userRepository = userRepository;
     }
 
@@ -46,12 +46,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private Authentication getUsernamePasswordAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(JwtProperties.HEADER_STRING);
+        String token = request.getHeader(JwtProperties.HEADER_STRING)
+                .replace(JwtProperties.TOKEN_PREFIX,"");
+
         if (token != null) {
             // parse the token and validate it
-            String userName = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()))
+            String userName = JWT.require(HMAC512(JwtProperties.SECRET.getBytes()))
                     .build()
-                    .verify(token.replace(JwtProperties.TOKEN_PREFIX, ""))
+                    .verify(token)
                     .getSubject();
 
             // Search in the DB if we find the user by token subject (username)
