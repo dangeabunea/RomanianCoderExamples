@@ -18,20 +18,17 @@ export class AppComponent implements OnInit {
 
     this.http.get('http://jsonplaceholder.typicode.com/users')
       .subscribe(data => {
-        console.log('Users');
-        console.log(data);
+        // TODO: Do stuff with data
       });
 
     this.http.get('http://jsonplaceholder.typicode.com/posts/2')
       .subscribe(data => {
-        console.log('Posts');
-        console.log(data);
+        // TODO: Do stuff with data
       });
 
     this.http.get('http://jsonplaceholder.typicode.com/posts/2/comments')
       .subscribe(data => {
-        console.log('Comments');
-        console.log(data);
+        // TODO: Do stuff with data
       });
   }
 }
