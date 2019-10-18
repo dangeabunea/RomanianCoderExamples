@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lombok.Data;
 
 @Component
 public class DbSeeder implements CommandLineRunner {
@@ -48,6 +49,6 @@ public class DbSeeder implements CommandLineRunner {
 
         //add our hotels to the database
         List<Hotel> hotels = Arrays.asList(marriot, ibis, sofitel);
-        this.hotelRepository.save(hotels);
+        this.hotelRepository.saveAll(hotels);
     }
 }

@@ -1,5 +1,7 @@
 package rc;
+import lombok.Data;
 
+//@Data
 public class Review {
     private String userName;
     private int rating;
